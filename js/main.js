@@ -1,93 +1,100 @@
-var jet = document.getElementById("jet");
+var character = document.getElementById("character");
 var board = document.getElementById("board");
 
+//Tastenbelegung:
+// Pfeiltasten und Keycode 32
+//32 ist die Leertaste und wird zum feuern des lasers verwendet
+
 window.addEventListener("keydown", (e) => {
-  var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+  var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
   if (e.key == "ArrowLeft" && left > 0) {
-    jet.style.left = left - 10 + "px";
+    character.style.left = left - 10 + "px";
   }
-  //460  =>  board width - jet width
+  //460  =>  board width - character width
   else if (e.key == "ArrowRight" && left <= 460) {
-    jet.style.left = left + 10 + "px";
+    character.style.left = left + 10 + "px";
   }
 
   if (e.key == "ArrowUp" || e.keyCode == 32) {
-    //32 is for space key
-    var bullet = document.createElement("div");
-    bullet.classList.add("bullets");
-    board.appendChild(bullet);
 
-    var movebullet = setInterval(() => {
-      var rocks = document.getElementsByClassName("rocks");
+    var laser = document.createElement("div");
+    laser.classList.add("lasers");
+    board.appendChild(laser);
 
-      for (var i = 0; i < rocks.length; i++) {
-        var rock = rocks[i];
-        if (rock != undefined) {
-          var rockbound = rock.getBoundingClientRect();
-          var bulletbound = bullet.getBoundingClientRect();
+    var movelaser = setInterval(() => {
+      var enemies = document.getElementsByClassName("enemies");
 
-          //Condition to check whether the rock/alien and the bullet are at the same position..!
-          //If so,then we have to destroy that rock
+      for (var i = 0; i < enemies.length; i++) {
+        var enemy = enemies[i];
+        if (enemy != undefined) {
+          var enemybound = enemy.getBoundingClientRect();
+          var laserbound = laser.getBoundingClientRect();
+
+          //Check ob laser und enemy in der gleichen position sind. Falls ja, wird der enemy zerstört
 
           if (
-            bulletbound.left >= rockbound.left &&
-            bulletbound.right <= rockbound.right &&
-            bulletbound.top <= rockbound.top &&
-            bulletbound.bottom <= rockbound.bottom
+            laserbound.left >= enemybound.left &&
+            laserbound.right <= enemybound.right &&
+            laserbound.top <= enemybound.top &&
+            laserbound.bottom <= enemybound.bottom
           ) {
-            rock.parentElement.removeChild(rock); //Just removing that particular rock;
+            enemy.parentElement.removeChild(enemy); //Der Enemy wird entfernt;
             //Scoreboard
             document.getElementById("points").innerHTML =
               parseInt(document.getElementById("points").innerHTML) + 1;
           }
         }
       }
-      var bulletbottom = parseInt(
-        window.getComputedStyle(bullet).getPropertyValue("bottom")
+      var laserbottom = parseInt(
+        window.getComputedStyle(laser).getPropertyValue("bottom")
       );
 
-      //Stops the bullet from moving outside the gamebox
-      if (bulletbottom >= 500) {
-        clearInterval(movebullet);
+      // Laser wird auf die größe des Gamecanvases begrenzt
+      if (laserbottom >= 500) {
+        clearInterval(movelaser);
       }
+	  //Der laser soll vom character ausgehen.
 
-      bullet.style.left = left + "px"; //bullet should always be placed at the top of my jet..!
-      bullet.style.bottom = bulletbottom + 3 + "px";
+      laser.style.left = left + "px"; 
+      laser.style.bottom = laserlaserbottom + 3 + "px";
     });
   }
 });
 
-var generaterocks = setInterval(() => {
-  var rock = document.createElement("div");
-  rock.classList.add("rocks");
-  //Just getting the left of the rock to place it in random position...
-  var rockleft = parseInt(
-    window.getComputedStyle(rock).getPropertyValue("left")
-  );
-  //generate value between 0 to 450 where 450 => board width - rock width
-  rock.style.left = Math.floor(Math.random() * 450) + "px";
+var generateenemies = setInterval(() => {
+  var enemy = document.createElement("div");
+  enemy.classList.add("enemies");
 
-  board.appendChild(rock);
+  //Enemy placement in zufälliger Position
+  var enemyleft = parseInt(
+    window.getComputedStyle(enemy).getPropertyValue("left")
+  );
+  //Wert zwischen 0 und 450 wird generiert wo 450 => board breite - enemy breite
+  enemy.style.left = Math.floor(Math.random() * 450) + "px";
+
+  board.appendChild(enemy);
 }, 1000);
 
-var moverocks = setInterval(() => {
-  var rocks = document.getElementsByClassName("rocks");
+//Enemy Movement
 
-  if (rocks != undefined) {
-    for (var i = 0; i < rocks.length; i++) {
-      //Now I have to increase the top of each rock,so that the rocks can move downwards..
-      var rock = rocks[i]; //getting each rock
-      var rocktop = parseInt(
-        window.getComputedStyle(rock).getPropertyValue("top")
+var moveenemies = setInterval(() => {
+  var enemies = document.getElementsByClassName("enemies");
+
+  if (enemies != undefined) {
+    for (var i = 0; i < enemies.length; i++) {
+      
+      var enemy = enemies[i]; //getting each enemy
+      var enemytop = parseInt(
+        window.getComputedStyle(enemy).getPropertyValue("top")
       );
-      //475 => boardheight - rockheight + 25
-      if (rocktop >= 475) {
+      //475 => boardheight - enemyheight + 25
+      if (enemytop >= 475) {
         alert("Game Over");
-        clearInterval(moverocks);
+        clearInterval(moveenemies);
         window.location.reload();
       }
 
-      rock.style.top = rocktop + 25 + "px";
+      enemy.style.top = enemytop + 25 + "px";
     }
   }
 }, 450);
