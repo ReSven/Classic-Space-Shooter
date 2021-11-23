@@ -1,74 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Space Shooter</title>
-  </head>
-  <style>
-    body {
-      width: 100%;
-      overflow: hidden;
-      background: url("images/Background/stars.png");
-      background-size: cover;
-    }
-    #board {
-      position: relative;
-      width: 500px;
-      height: 500px;
-      margin: 40px auto;
-      border: 2px solid white;
-      background-color: black;
-      overflow: hidden;
-    }
+<head>
+<title>Space Shooter</title>
+<link rel="stylesheet" href="CSS/Style.css">
+</head>
 
-    #character {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background: url("images/Characters/Spaceship.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      left: 50%;
-      bottom: 0px;
-    }
+<body>
+  <!--HTML-->
+  <div id="background">
+    <div id="ship"></div>
+    <div id="enemies"></div>
+    <div id="lasers"></div>
+  </div>
 
-    .laser {
-      position: absolute;
-      bottom: 40px;
-      left: 51%;
-      width: 20px;
-      height: 20px;
-      background: url("images/Effects/Laser/laserBlue01.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  <script>
+    //Javascript
+    //console.log(document);
 
-    .enemy {
-      position: absolute;
-      top: 0px;
-      width: 50px;
-      height: 50px;
-      background: url("images/Characters/EnemyShip.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-	  background-color: black;
+var ship = {
+  top: 700,
+  left: 550
+};
+
+var lasers = [];
+
+var enemies = [
+            { left: 200, top: 100 },
+            { left: 300, top: 100 },
+            { left: 400, top: 100 },
+            { left: 500, top: 100 },
+            { left: 600, top: 100 },
+            { left: 700, top: 100 },
+            { left: 800, top: 100 },
+            { left: 900, top: 100 },
+            { left: 200, top: 175 },
+            { left: 300, top: 175 },
+            { left: 400, top: 175 },
+            { left: 500, top: 175 },
+            { left: 600, top: 175 },
+            { left: 700, top: 175 },
+            { left: 800, top: 175 },
+            { left: 900, top: 175 }
+        ];
+
+document.onkeydown = function(e){
+      console.log(e);
+      if (e.keyCode === 37){
+        ship.left = ship.left - 10;
+        moveShip();
     }
-    #points {
-      position: absolute;
-      top: 0px;
-      margin: 40px;
-      opacity: 0.7;
-      font-size: 10em;
-      color: white;
+    //Move Up
+    else if (e.keyCode === 38){
+      ship.top = ship.top - 10;
+      moveShip();
     }
-  </style>
-  <script src="js/main.js" defer></script>
-  <body>
-    <div id="board">
-      <div class="enemies"></div>
-      <div id="character"></div>
-    </div>
-    <div id="points">0</div>
-  </body>
+    //Move Right
+    else if (e.keyCode === 39){
+      ship.left = ship.left + 10;
+      moveShip();
+    }
+    //Move Down
+    else if (e.keyCode === 40){
+      ship.top = ship.top + 10;
+      moveShip();
+    }
+    //Fire
+    else if (e.keyCode === 32){
+      lasers.push({
+        left: ship.left + 24,
+        top: ship.top - 30 
+      }) 
+      drawLaser();
+    }
+    drawShip();
+}
+
+function drawShip() {
+    document.getElementById('ship').style.left = ship.left + 'px';
+    document.getElementById('ship').style.top = ship.top + 'px';
+}
+
+function moveShip(){
+  document.getElementById('ship').style.left = ship.left + "px";
+  document.getElementById('ship').style.top = ship.top + "px";
+}
+
+function drawEnemies() {
+            document.getElementById('enemies').innerHTML = ""
+            for(var i = 0 ; i < enemies.length ; i++ ) {
+                document.getElementById('enemies').innerHTML += `<div class='enemy' style='left:${enemies[i].left}px; top:${enemies[i].top}px'></div>`;
+            }
+        }
+
+function moveEnemies() {
+            for(var i = 0 ; i < enemies.length ; i++ ) {
+                enemies[i].top = enemies[i].top + 1;}
+}
+
+function drawLaser(){
+  document.getElementById('lasers').innerHTML = "";
+  for(var i = 0; i < lasers.length; i ++){
+    document.getElementById('lasers').innerHTML += 
+    `<div class='laser' style=
+    'left:${lasers[i].left}px; 
+    top:${lasers[i].top}px'></div>`;
+  }
+}
+
+function moveLaser() {
+            for(var i = 0 ; i < lasers.length ; i++ ) {
+                lasers[i].top = lasers[i].top - 8
+            }
+        }
+
+function collisionDetection() {
+  for (var j = 0; j < enemies.length; j++) {
+      for (var i = 0; i < lasers.length; i++) {
+            if ( 
+              lasers[i].left >= enemies[j].left  &&
+              lasers[i].left <= (enemies[j].left + 50)  &&
+              lasers[i].top <= (enemies[j].top + 50)  &&
+              lasers[i].top >= enemies[j].top){
+                        enemies.splice(j, 1);
+                        lasers.splice(i, 1);
+                    } 
+                }
+            }
+        }
+
+function gameLoop(){
+  setTimeout(gameLoop, 50);
+  moveLaser();
+  drawLaser();
+  moveEnemies();
+  drawEnemies();
+  collisionDetection();      
+}
+
+gameLoop();
+
+</script>
+
+</body>
+
 </html>
