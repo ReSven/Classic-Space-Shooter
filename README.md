@@ -39,3 +39,12 @@ https://www.seekpng.com/ipng/u2q8a9u2e6a9i1t4_spaceship-spaceship-spacecraft-gam
 https://www.seekpng.com/ipng/u2e6w7a9w7r5t4a9_2d-spaceship-png-list-of-space-invaders-video/
 https://www.pngwing.com/en/free-png-sgxpb
 https://www.pngegg.com/en/png-bzhzb
+
+#### Known Bugs
+
+
+#### Browserkompabilität
+
+
+#### Aufteilung der Aufgaben:
+Nur 1 Person
