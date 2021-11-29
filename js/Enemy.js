@@ -95,7 +95,6 @@ class EnemyGroup {
 		this.player = player;
         this.lasershots = lasershots;
         this.explosions = explosion;
-        console.log("Explosion Enemy", explosion);
     }
 
     reset() {
