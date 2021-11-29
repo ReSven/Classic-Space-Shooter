@@ -93,7 +93,6 @@ function clearMessages() {
 
 function setExplosions() {
   GameManager.explosions = new Explosions("explosion00_s");
-  console.log("Explosion reset", GameManager.explosions);
 }
 
 function setLasers() {
