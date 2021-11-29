@@ -214,7 +214,7 @@ function createAttackSequence(spawnRate, image, number, assaultBlock, score, liv
 //In GameSettings.js genau definierte Angriffswellen sind auszuwählen.
 //Wähle: spawnRate , image, number, assaultBlock, scoreValue, lives, speed, spawnDelay
 function setUpSequences() {
-    createAttackSequence(500,'EnemyShip1', 1,  AssaultBlocks.ATTACKSIDE1, 100, 1, enemySpeed.normal, 1000);
+    createAttackSequence(500,'EnemyShip1', 1,  AssaultBlocks.ATTACKDOWN, 100, 1, enemySpeed.normal, 1000);
     createAttackSequence(500,'EnemyShip2', 4,  AssaultBlocks.ATTACKSIDE1, 100, 1, enemySpeed.normal, 1000);
     createAttackSequence(500,'EnemyShip3', 1,  AssaultBlocks.ATTACKMIXED2, 100, 1, enemySpeed.fast, 2000);
     createAttackSequence(500,'EnemyShip2', 2,  AssaultBlocks.ATTACKMIXED3, 100, 1, enemySpeed.normal, 1000);
