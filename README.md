@@ -1,6 +1,11 @@
 # Classic-Space-Shooter
 
-Dieses Spiel ist ein klassischer Space Shooter wie es in Massen in meiner Kindheit gab.
+Prüfungsleistung für WIP-OKT-2021
+
+Gruppe: 9
+Reil, Sven
+
+Dieses Spiel ist ein klassischer Arcade Space Shooter, wie ich sie früher in Massen auf dem Gameboy gespielt hat. Diese Art von 2D Space Shootern sind bis heute sehr beliebt, besonders in Japan.
 
 http://127.0.0.1:5500/index.html
 
