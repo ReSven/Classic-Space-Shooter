@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+body {
+  background-color: #000;
+  font-family: 'Orbitron', Impact, Charcoal, sans-serif;
+  color: #fff;
+  background: url(../images/space.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+#naviagtion {
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+#naviagtion a {
+	padding: 0 5px;
+	color: #fff;
+}
+
+
+#gameWindow {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+#gameArea {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  border: solid #fff 2px;
+  overflow: hidden;
+  text-align: center;
+  background-color: #000;
+}
+
+#gameInfos {
+  position: relative;
+  text-align: left;
+  font-size: 1.5em;
+  z-index: 30;
+  height: 100%;
+}
+
+#Score {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#highScore {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#lives {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#music {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: url(../images/pause.png) no-repeat center;
+  background-size: 50% 50%;
+  padding: 1em;
+}
+
+.infos {
+  padding: 10px;
+}
+
+.Ship {
+  position: absolute;
+  z-index: 10;
+}
+
+#messenger {
+  position: absolute;
+  top: 200px;
+  text-align: center;
+  width: 100%;
+  z-index: 40;
+}
+
+.message {
+  font-size: 3em;
+  padding: 20px;
+}
+
+.star {
+  position: absolute;
+  top: 0px;
+  background-color: #fff;
+  border-radius: 50%;
+  animation-name: starY;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.starSmall {
+  left: 300px;
+  width: 3px;
+  height: 3px;
+  background-color: #ccc;
+  animation-duration: 5s;
+}
+
+.starnormal {
+  left: 400px;
+  width: 4px;
+  height: 4px;
+  animation-duration: 4s;
+}
+
+.starBig {
+  left: 100px;
+  width: 5px;
+  height: 5px;
+  animation-duration: 3s;
+}
+
+@keyframes starY {
+  from {
+    transform: translateY(-30px);
+  }
+  to {
+    transform: translateY(600px);
+  }
+}
+
+@keyframes explosion {
+	0%   {background-image: url("../images/explosion00_s.png");}
+	20%   {background-image: url("../images/explosion01_s.png"); }
+	40%   {background-image: url("../images/explosion02_s.png");}
+	60%   {background-image: url("../images/explosion03_s.png");opacity: 0.9;}
+	80%   {background-image: url("../images/explosion04_s.png");opacity: 0.8;}
+	100%   {background-image: url("../images/explosion05_s.png");opacity: 0.5;}
+}
+
+.explosion {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 500px;
+	top: 300px;
+	animation-name: explosion;
+	animation-duration: 0.5s;
+	background-repeat: no-repeat;
+	z-index: 20;
+}
