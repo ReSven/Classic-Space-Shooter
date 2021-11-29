@@ -41,10 +41,20 @@ https://www.pngwing.com/en/free-png-sgxpb
 https://www.pngegg.com/en/png-bzhzb
 
 #### Known Bugs
-
+Es treten gelegentlich kurze Lags auf, die den Spielfluss stören.
+Die Hitboxen des Minibosses sind etwas ungenau.
 
 #### Browserkompabilität
 
+Dass Spiel läuft auf den gängigen Browsern:
+- Firefox Version 94.0.2
+- Edge Version 96.0.1054.34
+- Chrome Version 96.0.4664.45
+Ob ältere Versionen kompatibel sind, wurde nicht getestet.
+
+Safari wurde nicht getestet.
+
+Der Internet Explorer 11 funktioniert nicht. 
 
 #### Aufteilung der Aufgaben:
 Nur 1 Person
