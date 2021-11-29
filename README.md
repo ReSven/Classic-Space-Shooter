@@ -1,16 +1,25 @@
 # Classic-Space-Shooter
 
-Prüfungsleistung für WIP-OKT-2021
+## Prüfungsleistung für WIP-OKT-2021
 
-Gruppe: 9
+#### Projektname
+
+Classic-Space-Shooter
+
+#### Autor
 Reil, Sven
+Gruppe: 9
+
+#### Erstelldatum
 
 Dieses Spiel ist ein klassischer Arcade Space Shooter, wie ich sie früher in Massen auf dem Gameboy gespielt hat. Diese Art von 2D Space Shootern sind bis heute sehr beliebt, besonders in Japan.
 
 http://127.0.0.1:5500/index.html
 
+#### Versionsnummer:
+2.1 Dies ist die 2te Version meines Spaceshooters. Version 1.0 war sehr simplistisch gebaut ohne den einsatz von Javascript. Version 2.0 ist die aktuelle Version vor einer revision und einigen geaddete 
 
-Referenzen:
+#### Referenzen an 3rd Party Komponenten:
 Das Spiel wurde in Anlehnung an eine Tutorien Reihe auf youtube von BluefeverSoftware entwickelt, es wurde einiges von diesem Code verwendet:
 https://www.youtube.com/watch?v=KIo3sL5rq3M&list=PLZ1QII7yudbdBS1ymLLrVYNR_v9cCnCYi&ab_channel=BluefeverSoftware
 
